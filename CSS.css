@@ -11,10 +11,6 @@ html, body {
     flex-direction: column;
 }
 
-/*header{
-    background-color: white;
-}*/
-
 /* 總容器樣式 */
 .header-title-menu {
     display: flex;
@@ -59,44 +55,6 @@ h1{
 .search-form button:hover {
     background-color: #d45b20; /* 鼠標懸停變色 */
 }
-
-/*ul.language-menu {
-    display: none; 隱藏語言選單
-    position: absolute; 絕對定位，避免影響其他元素
-    background-color: white; 背景顏色
-    border: 1px solid #ccc;  邊框樣式 
-    min-width: 150px; 最小寬度
-    z-index: 100; 確保在最上層
-}*/
-
- /*當懸停時顯示語言選單 */
-/* ul.drop-down-menu li:hover > .language-menu {
-    display: block;  
-}   */
-
-/* 子選單項目的底部邊框 */
-/* .language-menu li {
-    border-bottom: 100px dotted #ccc; 
-} */
-
-/* 最後一項不顯示底部邊框 */
-/* .language-menu li:last-child {
-    border-bottom: none;
-} */
-
-
-/*.language-menu a {
-    display: block;  使整個區塊可點擊 
-    padding: 10px;  內邊距 
-    text-decoration: none;  去除下劃線 
-    color: #333;  文字顏色 
-}*/
-
-/*.language-menu a:hover {
-    background-color: #ef5c28;  懸停變色 
-    color: white;   懸停文字顏色 
-}
-*/
 
 ul { /* 取消ul預設的內縮及樣式 */
     margin: 0;
@@ -179,16 +137,19 @@ header a:hover{
     text-decoration: underline ;
 } 
 
-/* **************************Banner************** */
+/* **************************First_banner********************** */
 
-.banner {
-   
+.First_banner {
     position: relative;
     overflow: hidden;
     height: 60vh; /* 調整此高度以縮小 banner */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    width: 70%; /* 設置寬度為螢幕的 70% */
+    margin: 0 auto; /* 自動水平置中 */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 可選：添加陰影以增加立體感 */
 }
 
 .banner-slides {
@@ -242,6 +203,151 @@ header a:hover{
     left: 10px;
 }
 
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+} */
+
+/******************************** 快速搜索列******************************/
+.search-section {
+    margin-top: 40px;
+    background-image: url('images/back.jpeg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.quicksort-button {
+    background-color: #f8c471; /* 柔和金色背景 */
+    color: #4b5d67; /* 深灰藍色文字 */
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quicksort-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.quicksort-content {
+    display: none;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dropdown , .search-input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/***************************************** 讀者資料查詢 ****************************************/
+/* 讀者資料標題樣式 */
+#reader-info h2  {
+    text-align: center; /* 文字在父容器中水平置中 */
+    margin-bottom: 20px; /* 與下方元素留間距 */
+    font-size: 20px; /* 調整字體大小 */ 
+    font-size: 20px; /* 調整字體大小 */ 
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center;
+    height: calc(50% - 20px); /* 根據輸入框的高度調整 */
+}
+
+#reader-info {
+    display: flex; /* 使用 Flexbox */
+    flex-direction: column; /* 元素垂直排列 */
+    justify-content: center; /* 垂直置中 */
+    align-items: center; /* 水平置中 */
+    box-sizing: border-box; /* 包括內邊距和邊框 */
+}
+
+#reader-info .form-group {
+    display: flex; /* 使用 Flexbox */
+    align-items: center; /* 垂直方向置中 */
+    justify-content: center; /* 水平方向對齊到左側 */
+    margin-bottom: 15px; /* 元素之間的間距 */
+    gap: 10px; /* 標籤與輸入框之間的間距 */
+}
+
+#reader-info .form-group label {
+    color: white; /* 設置文字為白色 */
+    display: flex; /* 使用 Flexbox 排版 */
+    flex-direction: column; /* 元素垂直排列 */
+    font-size: 14px; /* 字體大小 */
+    font-weight: bold; /* 加粗文字 */
+    width: 80px; /* 固定寬度，根據需求調整 */
+    text-align: right; /* 文字對齊到右側 */
+}
+
+/* 輸入框樣式 */
+#reader-info .form-group input {
+    width: 25%; /* 輸入框寬度 */
+    padding: 10px; /* 內邊距 */
+    font-size: 14px; /* 字體大小 */
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 5px; /* 圓角 */
+    box-sizing: border-box; /* 包括內邊距和邊框 */
+}
+
+/* 登入按鈕 */
+#reader-info .login-btn {
+    display: block;
+    margin: 20px auto 0; /* 使用 margin 自動置中，並與上方元素保持距離 */
+    padding: 10px 20px;
+    font-size: 16px; /* 字體大小 */
+    color: white; /* 按鈕文字顏色 */
+    background-color: #e3a668; /* 黃金色背景 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    cursor: pointer; /* 手型游標 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 動態效果 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微按鈕陰影 */
+    margin-top: 15px;
+}
+
+#reader-info .login-btn:hover {
+    background-color: #d18f52; /* 懸停時更深的黃金色 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 增強按鈕陰影 */
+}
+
+.search-btn {
+    background-color: #f0a500;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top:10px;
+}
+
+.search-btn:hover {
+    background-color: #d48a00;
+}
+
+
 .book-carousel {
     position: relative;
     overflow: hidden;
@@ -290,68 +396,6 @@ header a:hover{
     right: 10px;
 }
 
-
-
-
-/* body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-} */
-
-.search-section {
-    margin-top: 40px;
-    background-image: url('images/back.jpeg'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    position: relative;
-}
-
-.header-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.search-container {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.dropdown, .search-input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-}
-
-.search-btn {
-    background-color: #f0a500;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top:10px;
-}
-
-.search-btn:hover {
-    background-color: #d48a00;
-}
-
 /* Hide all content sections by default */
 .tab-content {
     display: none;
@@ -373,6 +417,13 @@ header a:hover{
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .section {
@@ -459,23 +510,6 @@ header a:hover{
     display: block; /* 顯示選中的內容 */
 }
 
-
-.tab-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 10px;
-}
-
-.tab-button {
-    background-color: #f8c471; /* 柔和金色背景 */
-    color: #4b5d67; /* 深灰藍色文字 */
-    border: none;
-    padding: 8px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
 
 .tab-button.active {
     background-color: #ffffff; /* 活動的 Tab 按鈕設為白色背景 */
@@ -599,52 +633,8 @@ header a:hover{
     color: #f8c471; /* 同樣使用柔和金色突顯訪問人次 */
 }
 
-/* 表單群組 */
-.form-group {
-    margin-bottom: 15px; /* 每個輸入框之間的距離 */
-}
 
-.form-group label {
-    display: block; /* 標籤換行 */
-    font-size: 14px; /* 字體大小 */
-    color: #333; /* 深灰色 */
-    margin-bottom: 5px; /* 與輸入框的距離 */
-}
 
-/* 輸入框 */
-input {
-    width: 100%; /* 輸入框寬度占滿父容器 */
-    padding: 10px; /* 內邊距 */
-    font-size: 14px; /* 字體大小 */
-    border: 1px solid #ddd; /* 淺灰色邊框 */
-    border-radius: 5px; /* 圓角 */
-    box-sizing: border-box; /* 包含內邊距和邊框 */
-}
 
-/* 登入按鈕 */
-.login-btn {
-    display: block;
-    width: 100%; /* 按鈕寬度占滿父容器 */
-    padding: 10px;
-    font-size: 16px; /* 字體大小 */
-    color: white; /* 按鈕文字顏色 */
-    background-color: #e3a668; /* 黃金色背景 */
-    border: none; /* 無邊框 */
-    border-radius: 5px; /* 圓角 */
-    cursor: pointer; /* 手型游標 */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 動態效果 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微按鈕陰影 */
-}
 
-.login-btn:hover {
-    background-color: #d18f52; /* 懸停時更深的黃金色 */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 增強按鈕陰影 */
-}
 
-/* 標題樣式 */
-h2 {
-    text-align: center; /* 文字在父容器中水平置中 */
-    margin-bottom: 20px; /* 與下方元素留間距 */
-    font-size: 24px; /* 調整字體大小 */
-    color: #333; /* 設定文字顏色 */
-}

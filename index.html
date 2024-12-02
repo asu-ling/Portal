@@ -71,7 +71,7 @@
     </header>
     
     <main>
-        <section class="banner">
+        <section class="First_banner">
             <button class="banner_prev" onclick="changeSlide(-1)">&#10094;</button>
             <div class="banner-slides">
                 <!-- 每個 .slide 區塊都是一個 Banner，可以自由編輯 -->
@@ -103,86 +103,85 @@
             <button class="banner_next" onclick="changeSlide(1)">&#10095;</button>
         </section>
 
-<!-- 快速搜索列-->
-<section class="search-section">
-    <div class="header-buttons">
-        <button class="tab-button" onclick="switchTab('library-search')">館藏快速查詢</button>
-        <button class="tab-button active" onclick="switchTab('resource-search')">資料庫查詢</button>
-        <button class="tab-button" onclick="switchTab('reader-info')">讀者資料查詢</button>
-    </div>
+        <!-- 快速搜索列-->
+        <section class="search-section">
+            <div class="quicksort-buttons">
+                <button class="quicksort-button active" onclick="switchTab('library-search')">館藏快速查詢</button>
+                <button class="quicksort-button active" onclick="switchTab('resource-search')">資料庫查詢</button>
+                <button class="quicksort-button active" onclick="switchTab('reader-info')">讀者資料查詢</button>
+            </div>
     
-    <div class="search-container">
-        
+            <div class="search-container">
+                <div class="quicksort-content active" id="library-search">
+                    <p>可查本館圖書、電子書、期刊、視聽、學位論文等</p>
+                        <select class="dropdown">
+                            <option>題名/刊名</option>
+                            <option>作者</option>
+                            <option>ISBN</option>
+                        </select>
 
-        <div class="tab-content active" id="library-search">
-            <p>可查本館圖書、電子書、期刊、視聽、學位論文等</p>
-            <select class="dropdown">
-                        <option>題名/刊名</option>
-                        <option>作者</option>
-                        <option>ISBN</option>
-            </select>
-            <select class="dropdown">
-                <option>全部館藏</option>
-                <option>電子資源</option>
-                <option>期刊</option>
-            </select>
-            <input type="text" class="search-input" placeholder="請輸入關鍵字">
-            <button class="search-btn">&#128269;</button>
-        </div>
+                        <select class="dropdown">
+                            <option>全部館藏</option>
+                            <option>電子資源</option>
+                            <option>期刊</option>
+                        </select>
+
+                        <input type="text" class="search-input" placeholder="請輸入關鍵字">
+
+                        <button class="search-btn">&#128269;</button>
+                </div>
         
-        <div class="tab-content active" id="resource-search">
-            <label for="database">資料庫</label>
-            <select id="database" class="dropdown" onchange="handleDatabaseChange()">
-                <option value="">資料庫名稱</option>
-                <option value="library">Library Catalogue</option>
-                <option value="micromedex">Micromedex Solutions</option>
-                <option value="pubmed">PubMed Database</option>
-                <option value="medlineplus">MedlinePlus</option>
-                <option value="cochrane">Cochrane</option>
-                <option value="atoz">AtoZ</option>
-                <!-- Add options here -->
-            </select>
+                <div class="quicksort-content active" id="resource-search">
+                    <label for="database">資料庫</label>
+                    <select id="database" class="dropdown" onchange="handleDatabaseChange()">
+                        <option value="">資料庫名稱</option>
+                        <option value="library">Library Catalogue</option>
+                        <option value="micromedex">Micromedex Solutions</option>
+                        <option value="pubmed">PubMed Database</option>
+                        <option value="medlineplus">MedlinePlus</option>
+                        <option value="cochrane">Cochrane</option>
+                        <option value="atoz">AtoZ</option>
+                            <!-- Add options here -->
+                     </select>
 
                 <!-- 新的下拉式選單（默認隱藏） -->
-            <div id="extra-dropdown-container" style="display: none;">
-            <label for="library-options">更多選項</label>
-            <select id="library-options">
-                <option value="">請選擇</option>
-                <option value="keyword">keyword</option>
-                <option value="title">title</option>
-                <option value="author">author</option>
-                <option value="subject">subject</option>
-                <option value="ISBN">ISBN</option>
-                <option value="series">series</option>
-                <option value="Call Number">Call Number</option>
-            </select>
-            </div>
+                <!-- <div id="extra-dropdown-container" style="display: none;">
 
-            <!-- <label for="journal">電子期刊</label>
-            <select id="journal">
-                <option>刊名</option> -->
-                <!-- Add options here -->
-            <!-- </select> -->
-            <input type="text" class="search-input" placeholder="請輸入關鍵字">
-            <button class="search-btn">&#128269;</button>
-        </div>
+                    <label for="library-options">更多選項</label>
+                    <select id="library-options">
+                        <option value="">請選擇</option>
+                        <option value="keyword">keyword</option>
+                        <option value="title">title</option>
+                        <option value="author">author</option>
+                        <option value="subject">subject</option>
+                        <option value="ISBN">ISBN</option>
+                        <option value="series">series</option>
+                        <option value="Call Number">Call Number</option>
+                    </select>
+                </div> -->
+                
+                    <input type="text" class="search-input" placeholder="請輸入關鍵字">
+                    <button class="search-btn">&#128269;</button>
+             </div>
 
-        <div class="tab-content active" id="reader-info">
-            <h2>請先登入</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">帳號：</label>
-                    <input type="text" id="username" name="username" required>
+                <div class="quicksort-content active" id="reader-info">
+                    <h2>請先登入</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">帳號：</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+
+                        <div class="form-group">    
+                            <label for="password">密碼：</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+
+                        <button type="submit" class="login-btn">登入</button>
+                    </form>
                 </div>
-                <div class="form-group">    
-                    <label for="password">密碼：</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="login-btn">登入</button>
-            </form>
-        </div>
-    </div>
-</section>
+             </div>
+        </section>
 
 
         <section class="book-carousel">
@@ -259,31 +258,7 @@
                     <li><a href="#">11/16~28 來自東西方文化：成功講座</a></li>
                     <li><a href="#">2024學期支學獎金典藏</a></li>
                 </ul>
-                <!-- <a href="#" class="more-news-link">更多最新消息</a> -->
             </div>
-    
-            <!-- <div class="section">
-                <h3 class="section-title">讀者專區</h3>
-                <div class="news-list"> -->
-                    <!-- <img src="activity1.png" alt="Activity 1">
-                    <img src="activity2.png" alt="Activity 2">
-                    <img src="activity3.png" alt="Activity 3">
-                    <img src="activity4.png" alt="Activity 4">
-                    <img src="activity5.png" alt="Activity 5">
-                    <img src="activity6.png" alt="Activity 6"> -->
-                    <!-- <li><a href="#">最新文章推薦：探索我們為您精選的熱門內容，隨時掌握趨勢資訊！</a></li>
-                    <li><a href="#">加入討論：分享您的想法，與其他讀者交流見解！</a></li>
-                    <li><a href="#">訂閱電子報：每週獲取專屬的精華內容，精彩不漏看！</a></li>
-                    <li><a href="#">熱門主題：快速瀏覽當前最受關注的主題與文章。</a></li>
-                    <li><a href="#">閱讀清單：保存您喜愛的文章，方便隨時回顧。</a></li>
-                    <li><a href="#">專屬讀者活動：參加特別企劃，獲取驚喜獎勵和福利！</a></li>
-                    <li><a href="#">【OA培訓】Elsevier開放用線上工作坊</a></li>
-                    <li><a href="#">11/12~17 2024 世界愛滋日書展活動</a></li>
-                    <li><a href="#">【有獎徵文】各種科學書籍活動，歡迎參與</a></li>
-                    <li><a href="#">11/16~28 來自東西方文化：成功講座</a></li>
-                    <li><a href="#">2024學期支學獎金典藏</a></li>
-                </div>
-            </div> -->
         </div>
         
         
