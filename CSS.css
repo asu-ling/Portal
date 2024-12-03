@@ -22,6 +22,14 @@ html, body {
     position: relative; /* 確保容器位置可控制 */
 }
 
+.section {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 h1{
     font-size: 3rem;
     margin-right: 30px; /* 與選單保持適當間距 */
@@ -406,7 +414,7 @@ header a:hover{
     margin-top: 20px;
 }
 
-/*三個欄位*/
+/*******************************************中間分欄**********************************************/
 .container {
     display: flex;
     justify-content: space-between;
@@ -417,21 +425,6 @@ header a:hover{
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
-}
-
-.header-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.section {
-    flex: 1;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 標題樣式 */
@@ -465,20 +458,20 @@ header a:hover{
     text-decoration: underline;
 }
 
-.more-link {
+/* .more-link {
     display: inline-block;
     margin-top: 15px;
     font-size: 14px;
     color: #b22222;
     text-decoration: none;
     transition: text-decoration 0.3s ease, color 0.3s ease;
-}
+} */
 
-.more-link:hover {
+/* .more-link:hover {
     text-decoration: underline;
-}
+} */
 
-.activity-list img {
+/* .activity-list img {
     display: block;
     margin: 10px 0;
     width: 100%;
@@ -488,11 +481,12 @@ header a:hover{
 
 .activity-list img:hover {
     transform: scale(1.05);
-}
+} */
 
 
-/* Info Section Styling */
-.tab-container {
+/***************************** Info Section Styling *********************/
+
+.info-container {
     margin-top: 40px;
     width: 100%; /* 設置寬度以適應頁面 */
     max-height: 300px; /* 固定高度，根據需求調整 */
@@ -506,28 +500,31 @@ header a:hover{
     top: 0; /* 距離頂部為 0 */
 }
 
-.tab-content.active {
+.info-button {
+    background-color: #f8c471; /* 柔和金色背景 */
+    color: #4b5d67; /* 深灰藍色文字 */
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.info-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.info-content.active {
     display: block; /* 顯示選中的內容 */
 }
 
 
-.tab-button.active {
+.info-button.active {
     background-color: #ffffff; /* 活動的 Tab 按鈕設為白色背景 */
-    color: #4b5d67; /* 深灰藍色文字 */
-}
-
-.tab-content-container {
-    background-color: #d5d8dc; /* 淡灰色背景 */
-    padding: 10px;
-    border-radius: 5px;
-    height: 200px; /* 設置內容區塊的高度 */
-    overflow: hidden;
-    position: relative;
-}
-
-.scrollable-content {
-    max-height: 180px; /* 設置最大高度 */
-    overflow-y: auto; /* 啟用垂直滾動條 */
     color: #4b5d67; /* 深灰藍色文字 */
 }
 

@@ -262,14 +262,14 @@
         </div>
         
         
-        <div class="tab-container">
-            <div class="header-buttons">
-                <button class="tab-button active" onclick="switchTab('latest-news')">最新消息</button>
-                <button class="tab-button" onclick="switchTab('service-announcement')">服務公告</button>
-                <button class="tab-button" onclick="switchTab('event-info')">活動訊息</button>
+        <div class="info-container">
+            <div class="info-buttons">
+                <button class="info-button active" onclick="info_switchTab('latest-news')">最新消息</button>
+                <button class="info-button" onclick="info_switchTab('service-announcement')">服務公告</button>
+                <button class="info-button" onclick="info_switchTab('event-info')">活動訊息</button>
             </div>
         
-            <div id="latest-news" class="tab-content active">
+            <div id="latest-news" class="info-content active">
                 <ul class="news-list">
                     <li>
                         <span class="date">2024-11-03</span>
@@ -332,7 +332,7 @@
         
             <!-- Add other tab contents here -->
 
-            <div id="service-announcement" class="tab-content active">
+            <div id="service-announcement" class="info-content active">
                 <ul class="news-list">
                     <li>
                         <span class="date">2024-10-20</span>

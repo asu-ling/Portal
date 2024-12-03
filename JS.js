@@ -137,23 +137,25 @@ function switchContent(tabId) {
 // }
 
 
-// 初始化：只顯示館藏快速查詢內容
+// 初始化：只顯示預設的內容 info && 館藏快速查詢
 document.addEventListener("DOMContentLoaded", () => {
+    // 初始化兩組標籤切換功能
     switchTab("library-search"); // 預設顯示館藏快速查詢
+    info_switchTab("latest-news"); // 預設顯示最新消息
 });
 
-// 切換標籤內容函數
+// 切換館藏快速查詢標籤內容
 function switchTab(tabId) {
     // 隱藏所有內容
-    const allContents = document.querySelectorAll(".quicksort-content");
-    allContents.forEach(content => {
+    document.querySelectorAll(".quicksort-content").forEach(content => {
         content.classList.remove("active");
         content.style.display = "none"; // 隱藏內容
     });
 
     // 移除所有按鈕的 active 樣式
-    const allButtons = document.querySelectorAll(".quicksort-button");
-    allButtons.forEach(button => button.classList.remove("active"));
+    document.querySelectorAll(".quicksort-button").forEach(button => {
+        button.classList.remove("active");
+    });
 
     // 顯示選定的內容
     const activeContent = document.getElementById(tabId);
@@ -168,6 +170,106 @@ function switchTab(tabId) {
         activeButton.classList.add("active");
     }
 }
+
+// 切換資訊區標籤內容
+function info_switchTab(tabId) {
+    // 隱藏所有內容
+    document.querySelectorAll(".info-content").forEach(content => {
+        content.classList.remove("active");
+        content.style.display = "none"; // 隱藏內容
+    });
+
+    // 移除所有按鈕的 active 樣式
+    document.querySelectorAll(".info-button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    // 顯示選定的內容
+    const activeContent = document.getElementById(tabId);
+    if (activeContent) {
+        activeContent.classList.add("active");
+        activeContent.style.display = "block"; // 顯示內容
+    }
+
+    // 添加 active 樣式到相應的按鈕
+    const activeButton = document.querySelector(`.info-button[onclick="info_switchTab('${tabId}')"]`);
+    if (activeButton) {
+        activeButton.classList.add("active");
+    }
+}
+
+
+
+// // -------------------------------------------------初始化：只顯示館藏快速查詢內容--------------------------------
+// document.addEventListener("DOMContentLoaded", () => {
+//     switchTab("library-search"); // 預設顯示館藏快速查詢
+// });
+
+// // 切換標籤內容函數
+// function switchTab(tabId) {
+//     // 隱藏所有內容
+//     const allContents = document.querySelectorAll(".quicksort-content");
+//     allContents.forEach(content => {
+//         content.classList.remove("active");
+//         content.style.display = "none"; // 隱藏內容
+//     });
+
+//     // 移除所有按鈕的 active 樣式
+//     const allButtons = document.querySelectorAll(".quicksort-button");
+//     allButtons.forEach(button => button.classList.remove("active"));
+
+//     // 顯示選定的內容
+//     const activeContent = document.getElementById(tabId);
+//     if (activeContent) {
+//         activeContent.classList.add("active");
+//         activeContent.style.display = "block"; // 顯示內容
+//     }
+
+//     // 添加 active 樣式到相應的按鈕
+//     const activeButton = document.querySelector(`.quicksort-button[onclick="switchTab('${tabId}')"]`);
+//     if (activeButton) {
+//         activeButton.classList.add("active");
+//     }
+// }
+
+// //--------------------------------------------------- 初始化：info---------------------------------------
+// document.addEventListener("DOMContentLoaded", () => {
+//     switchTab("latest-news"); // 預設顯示館藏快速查詢
+// });
+
+// // 切換標籤內容函數
+// function info_switchTab(tabId) {
+//     // 隱藏所有內容
+//     const allContents = document.querySelectorAll(".info-content");
+//     allContents.forEach(content => {
+//         content.classList.remove("active");
+//         content.style.display = "none"; // 隱藏內容
+//     });
+
+//     // 移除所有按鈕的 active 樣式
+//     const allButtons = document.querySelectorAll(".info-button");
+//     allButtons.forEach(button => button.classList.remove("active"));
+
+//     // 顯示選定的內容
+//     const activeContent = document.getElementById(tabId);
+//     if (activeContent) {
+//         activeContent.classList.add("active");
+//         activeContent.style.display = "block"; // 顯示內容
+//     }
+
+//     // 添加 active 樣式到相應的按鈕
+//     const activeButton = document.querySelector(`.info-button[onclick="info_switchTab('${tabId}')"]`);
+//     if (activeButton) {
+//         activeButton.classList.add("active");
+//     }
+// }
+
+
+
+
+
+
+
 
 
 
