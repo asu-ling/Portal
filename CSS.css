@@ -1,6 +1,7 @@
 *{
     padding: 0 ;
     margin: 0 ;
+    box-sizing: border-box;
 }
 
 /* 使 body 和 html 撐滿頁面高度 */
@@ -9,16 +10,29 @@ html, body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+/* 確保導覽列始終在頁面頂部 */
+header {
+    /*position: fixed; /* 導覽列固定在頁面頂部 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 確保導覽列寬度為全頁 */
+    z-index: 1000; /* 確保導覽列在其他元素之上 */
+    background-color: white; /* 背景色，避免與內容混合 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可選：添加陰影提升視覺效果 */
 }
 
 /* 總容器樣式 */
 .header-title-menu {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row; /* 將元素水平排列 */
     align-items: flex-end; /* 將元素與下方對齊 */
     justify-content: space-between; /* 讓標題、菜單和搜索欄分佈開 */
     width: 100%;
-    padding-bottom: 10px; /* 添加與底部的距離 */
+    padding-bottom: 10px 20px; /* 添加與底部的距離 */
     position: relative; /* 確保容器位置可控制 */
 }
 
@@ -30,39 +44,122 @@ html, body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-h1{
+/* Portal 標題樣式 */
+.header-title-menu h1{
     font-size: 3rem;
     margin-right: 30px; /* 與選單保持適當間距 */
-    margin-left:20px;
+    margin-left:35px;
+    margin-top: 20px;
    /* white-space: nowrap;*/
 }
 
-.search-form {
+/* 整個搜索容器 */
+.header-search-container {
     display: flex;
+    position: relative;
     align-items: center; /* 垂直置中 */
-    margin-left: auto; /* 將搜索框推到右側 */
-    margin-right: 10px;
+    justify-content: flex-start; /* 將內容對齊到右側 */
+    margin-left: auto; /* 确保搜索栏在导航栏的右侧 */
+    width: auto;
+    flex-shrink: 0; /* 防止縮小 */
+    height: auto; /* 自動調整高度 */
+    gap: 5px; /* 搜索圖標和查詢列的間距 */
+    flex-direction: row-reverse; /* 改變排列方向，讓圖標在右側 */
 }
 
+/* 搜索圖標樣式 */
+.header-search-icon {
+    display: flex; /* 使用 flexbox 方便調整 */
+    align-items: center; /* 圖標垂直居中 */
+    justify-content: center; /* 圖標水平居中 */
+    width: 40px; /* 固定寬度 */
+    height: 40px; /* 固定高度 */
+    font-size: 20px; /* 設定圖標大小 */
+    background: white;
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 5px 0 0 5px; /* 左側圓角 */
+    cursor: pointer; /* 鼠標變為手形 */
+    color: black; /* 圖標顏色 */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* 動態效果 */
+    right: 20%;
+   /* position: absolute;
+    right: 35%;
+    transform: translateY(-50%);
+    transform: translateX(50%);  向右微調位置 
+    cursor: pointer;
+    color: black;  圖標顏色 
+    padding: 5px 10px;  減少內邊距 
+    transition: transform 0.3s ease, color 0.3s ease; /* 添加變化效果 */
+}
+
+.header-search-icon:hover {
+    transform: scale(1.2); /* 懸停時放大效果 */
+    background-color: #f8c471; /* 懸停時變背景色 */
+}
+
+/* 查詢列樣式 */
+.header-search-bar {
+    /*position: absolute;*/
+    display: none; /* 使用 flexbox 方便排列 */
+    align-items: center; /* 垂直居中 */
+    background-color: white; /* 查詢列背景顏色 */
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 0 5px 5px 0; /* 右側圓角 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    width: 250px; /* 查詢列寬度 */
+    z-index: 10; /* 保證在其他元素之上 */
+}
+
+.header-search-bar input {
+    flex: 1; /* 讓輸入框佔據剩餘空間 */
+    padding: 10px; /* 內邊距 */
+    border: none; /* 移除邊框 */
+    font-size: 14px; /* 字體大小 */
+    outline: none; /* 移除聚焦邊框 */
+}
+
+.header-search-bar button {
+    background-color: white; /* 按鈕背景顏色 */
+    border: none; /* 無邊框 */
+    color: white; /* 按鈕文字顏色 */
+    padding: 10px 15px; /* 內邊距 */
+    font-size: 14px; /* 字體大小 */
+    border-radius: 0 5px 5px 0; /* 右側圓角 */
+    cursor: pointer; /* 鼠標變為手形 */
+    transition: background-color 0.3s ease;
+}
+
+.header-search-bar button:hover {
+    background-color: #f8c471; /* 懸停時背景色變深 */
+}
+
+
+/*.search-form {
+    display: flex;
+    align-items: center;  垂直置中 
+    margin-left: auto;  將搜索框推到右側 
+    margin-right: 20px;
+} 
+
 .search-form input[type="text"] {
-    padding: 5px 10px; /* 增加內邊距 */
-    margin-right: 10px; /* 搜索框與按鈕之間的間距 */
-    border: 1px solid #ccc; /* 邊框樣式 */
-    border-radius: 4px; /* 圓角 */
+    padding: 5px 10px;  增加內邊距 
+    margin-right: 10px;  搜索框與按鈕之間的間距 
+    border: 1px solid #ccc;  邊框樣式 
+    border-radius: 4px;  圓角 
 }
 
 .search-form button {
-    padding: 5px 10px; /* 增加內邊距 */
-    border: none; /* 移除邊框 */
-    background-color: #ef5c28; /* 按鈕背景顏色 */
-    color: white; /* 按鈕文字顏色 */
-    cursor: pointer; /* 鼠標變為手形 */
-    border-radius: 4px; /* 圓角 */
+    padding: 5px 10px;  增加內邊距 
+    border: none;  移除邊框 
+    background-color: #ef5c28;  按鈕背景顏色 
+    color: white;  按鈕文字顏色 
+    cursor: pointer;  鼠標變為手形 
+    border-radius: 4px;  圓角 
 }
 
 .search-form button:hover {
-    background-color: #d45b20; /* 鼠標懸停變色 */
-}
+    background-color: #d45b20; /* 鼠標懸停變色 
+}*/
 
 ul { /* 取消ul預設的內縮及樣式 */
     margin: 0;
@@ -71,10 +168,13 @@ ul { /* 取消ul預設的內縮及樣式 */
 }
 
 ul.drop-down-menu {
-        border: #ccc 1px solid;
-        display: inline-block;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 13px;
+    display: flex; /* 使用 Flexbox 使导航栏水平排列 */
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-end; /* 靠右对齐 */
+    list-style: none;
+        margin: 0;
+        padding: 0;
+        gap :20px;
 }
 
 ul.drop-down-menu li {
@@ -92,6 +192,7 @@ ul.drop-down-menu > li {
 }
 
 ul.drop-down-menu a {
+    text-decoration: none;
     background-color: #fff;
     color: #333;
     display: block;
@@ -110,21 +211,43 @@ ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單時，上層按鈕仍�
     color: #fff;
 }
 
+/* 子選單樣式 */
 ul.drop-down-menu ul {
-    border: #ccc 1px solid;
+    display: none; /* 默認隱藏 */
     position: absolute;
-    z-index: 99;
-    left: -1px;
     top: 100%;
-    min-width: 180px;
+    left: 0;
+    background-color: white;
+    padding: 0; /* 移除多餘的內邊距 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加陰影 */
+    border-radius: 5px;
+    min-width: 180px; /* 保證選單寬度一致 */
 }
 
 ul.drop-down-menu ul li {
-    border-bottom: #ccc 1px solid;
+    padding: 10px 0; /* 上下內邊距，控制文字區域高度 */
+    border-bottom: 1px solid #ccc; /* 添加分隔線 */
+    text-align: center; /* 文字水平置中 */
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
 }
 
 ul.drop-down-menu ul li:last-child {
-    border-bottom: none;
+    border-bottom: none; /* 去掉最後一項的分隔線 */
+}
+
+ul.drop-down-menu ul li a {
+    text-decoration: none; /* 移除下劃線 */
+    color: #333; /* 字體顏色 */
+    font-size: 14px; /* 調整字體大小 */
+    width: 100%; /* 讓鏈接撐滿父容器 */
+    height: 100%; /* 讓鏈接撐滿父容器 */
+}
+
+ul.drop-down-menu ul li a:hover {
+    background-color: #ef5c28; /* 懸停背景顏色 */
+    color: white; /* 懸停文字顏色 */
 }
 
 ul.drop-down-menu ul ul { /*第三層以後的選單出現位置與第二層不同*/
@@ -154,9 +277,9 @@ header a:hover{
     display: flex;
     align-items: center; /* 垂直置中 */
     justify-content: center; /* 水平置中 */
-    width: 70%; /* 設置寬度為螢幕的 70% */
+    width: 85%; /* 設置寬度為螢幕的 70% */
     margin: 0 auto; /* 自動水平置中 */
-    margin-top: 20px;
+    margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 可選：添加陰影以增加立體感 */
 }
 
@@ -166,6 +289,7 @@ header a:hover{
 }
 
 .slide {
+    position: relative;
     min-width: 100%;
     height: 100%; /* 調整這裡來讓幻燈片填滿整個 banner */
     display: flex;
@@ -237,6 +361,11 @@ header a:hover{
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    white-space: nowrap; /* 避免按鈕文字換行 */
+}
+
+.quicksort-button:hover {
+    background-color: #e4ac5e;
 }
 
 .quicksort-buttons{
@@ -246,7 +375,7 @@ header a:hover{
     margin-bottom: 20px;
 }
 
-.search-container {
+.quicksort-search-container {
     background-color:rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
@@ -258,6 +387,9 @@ header a:hover{
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    flex-direction: column;
+    gap: 10px; /* 控制表單元素的間距 */
+    align-items: center; /* 在窄螢幕下置中 */
 }
 
 .dropdown , .search-input {
@@ -355,24 +487,30 @@ header a:hover{
     background-color: #d48a00;
 }
 
-
+/* 書籍輪播容器 */
 .book-carousel {
     position: relative;
-    overflow: hidden;
     width: 100%;
     max-width: 1200px;
     margin: 40px auto 0; /* 添加 40px 的上間距 */
+    overflow: hidden;
 }
 
-
+/* 書籍內容展示區 */    
 .book-gallery {
     display: flex;
+    gap: 10px; /* 書籍間距 */
     transition: transform 0.5s ease-in-out;
+    scroll-behavior: smooth; /* 平滑滾動 */
+    overflow-x: auto; /* 啟用橫向滾動 */
+    padding-bottom: 10px; /* 防止滾動條覆蓋 */
 }
 
+/* 書籍卡片 */
 .book {
-    min-width: 150px;
-    margin-right: 20px;
+    flex: 0 0 auto; /* 防止書籍縮放 */
+    min-width: 150px; /* 固定最小寬度 */
+    max-width: 200px; /* 最大寬度限制 */
     text-align: center;
 }
 
@@ -580,10 +718,6 @@ header a:hover{
     text-decoration: underline;
 }
 
-
-
-
-
 /*Footer*/
 .footer {
     background-color: #4b5d67; /* 深灰藍色背景，給人穩重感 */
@@ -631,7 +765,135 @@ header a:hover{
 }
 
 
+    /********************************************* 書籍輪播 ***********************************************/
+    .book-gallery {
+        overflow-x: scroll; /* 開啟水平滾動 */
+        gap: 50px !important ; /* 書籍間距 */
+        display: flex;
+        /* overflow-x: auto; */
+    }
+
+    .book {
+        min-width: 150px; /* 書籍卡片縮小 */
+        margin-right: 80px !important; /* 書與書之間的間距 */
+        text-align: center;
+    }
+
+    .book:last-child {
+        margin-right: 0; /* 移除最後一本書的多餘間距 */
+    }
+
+    /* Footer */    
+    .footer-content {
+        flex-direction: column; /* 內容垂直排列 */
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-container {
+        margin-bottom: 10px; /* 與其他部分增加距離 */
+    }
+
+    .contact-info p {
+        margin: 3px 0; /* 縮小段落間距 */
+    }
 
 
+    @media (max-width: 768px) {
+        .header-title-menu {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        ul.drop-down-menu {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        h1 {
+            font-size: 2rem;
+        }
+    
+        .container {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quicksort-buttons {
+            flex-direction: column; /* 按鈕垂直排列 */
+            align-items: center;
+        }
+
+        .quicksort-button {
+            width: 80%; /* 按鈕寬度自適應 */
+        }
+
+        .dropdown, .search-input {
+            width: 90%; /* 表單元素填滿容器 */
+        }
+    
+        .quicksort-search-container {
+            padding: 15px; /* 減少內邊距 */
+        }
+    }
+    
+        .footer-content {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
+    /* RWD：手機裝置 */
+    @media (max-width: 480px) {
+        .header-title-menu {
+            padding: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+        }
+    
+        ul.drop-down-menu {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+    
+        .header-search-bar {
+            width: 100%;
+        }
+    
+        .container {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .quicksort-content {
+            gap: 5px; /* 減小間距 */
+        }
+    
+        .dropdown, .search-input {
+            width: 100%; /* 最大化使用螢幕寬度 */
+        }
+    
+        .search-btn {
+            width: 100%; /* 搜索按鈕全寬 */
+        }
+    
+        .quicksort-buttons {
+            flex-direction: column; /* 垂直排列按鈕 */
+            gap: 5px; /* 減少按鈕間距 */
+        }
+    
+        .footer {
+            font-size: 12px;
+            padding: 15px;
+        }
+    }
+
+}
 
 

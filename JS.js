@@ -1,4 +1,26 @@
-//********************************************* */ 控制Banner左右滑動****************************
+// -------------------------------------header切換查詢列顯示/隱藏*********************************************
+function toggleSearchBar() {
+    const searchBar = document.querySelector('.header-search-bar');
+    // if (searchBar.style.display === 'block') {
+    //     searchBar.style.display = 'none'; // 隱藏
+    // } else {
+    //     searchBar.style.display = 'block'; // 顯示
+    searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';    
+}
+
+// 執行查詢動作
+function performSearch() {
+    const searchInput = document.querySelector('.header-search-bar input').value;
+    if (searchInput.trim()) {
+        alert(`查詢內容: ${searchInput}`);
+        // 在這裡添加查詢邏輯，例如發送請求
+    } else {
+        alert('請輸入查詢內容！');
+    }
+}
+
+
+//********************************************* * 控制Banner左右滑動****************************
 let currentSlide = 0; // 初始幻燈片索引
 const slides = document.querySelectorAll('.slide'); // 獲取所有幻燈片
 const totalSlides = slides.length; // 總幻燈片數量
@@ -39,61 +61,71 @@ document.querySelector('.banner_next').addEventListener('click', () => changeSli
 
                                 
 /***********************************************控制 書籤左右滑動*****************************************************/
-document.addEventListener("DOMContentLoaded", function() {
-    const gallery = document.querySelector('.book-gallery'); // 書籍展示區
-    const books = document.querySelectorAll('.book'); // 所有書籍
-    const bookWidth = books[0].offsetWidth + 20; // 每本書的寬度加上間距
-    let scrollPosition = 0; // 當前滾動位置
+function scrollGallery(direction) {
+    const gallery = document.querySelector('.book-gallery');
+    const scrollAmount = direction * 300; // 每次滾動的距離
+    gallery.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
+    });
+}
 
-    // 滾動書籍畫廊的函數
-    function scrollGallery(direction) {
-        // 計算畫廊的最大滾動寬度
-        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-        scrollPosition += direction * bookWidth; // 更新滾動位置
+// document.addEventListener("DOMContentLoaded", function() {
+//     const gallery = document.querySelector('.book-gallery'); // 書籍展示區
+//     const books = document.querySelectorAll('.book'); // 所有書籍
+//     const bookWidth = books[0].offsetWidth + 20; // 每本書的寬度加上間距
+//     let scrollPosition = 0; // 當前滾動位置
 
-        // 限制滾動位置在範圍內
-        if (scrollPosition < 0) {
-            scrollPosition = 0;
-        } else if (scrollPosition > maxScroll) {
-            scrollPosition = maxScroll;
-        }
+//     // 滾動書籍畫廊的函數
+//     function scrollGallery(direction) {
+//         // 計算畫廊的最大滾動寬度
+//         const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+//         scrollPosition += direction * bookWidth; // 更新滾動位置
 
-        // 滾動畫廊
-        gallery.style.transform = `translateX(-${scrollPosition}px)`;
-    }
+//         // 限制滾動位置在範圍內
+//         if (scrollPosition < 0) {
+//             scrollPosition = 0;
+//         } else if (scrollPosition > maxScroll) {
+//             scrollPosition = maxScroll;
+//         }
 
-    // 綁定按鈕點擊事件
-    document.querySelector('.book_carousel_prev').addEventListener('click', () => scrollGallery(-1));
-    document.querySelector('.book_carousel_next').addEventListener('click', () => scrollGallery(1));
-});
+//         // 滾動畫廊
+//         gallery.style.transform = `translateX(-${scrollPosition}px)`;
+//     }
 
-document.querySelector('.search-btn').addEventListener('click', function() {
-    alert('Search button clicked!');
-});
+//     // 綁定按鈕點擊事件
+//     document.querySelector('.book_carousel_prev').addEventListener('click', () => scrollGallery(-1));
+//     document.querySelector('.book_carousel_next').addEventListener('click', () => scrollGallery(1));
+// });
 
-document.addEventListener("DOMContentLoaded", function() {
-    let currentIndex = 0;
-    const books = document.querySelectorAll(".book");
-    const totalBooks = books.length;
-    const bookGallery = document.querySelector(".book-gallery");
+// document.querySelector('.search-btn').addEventListener('click', function() {
+//     alert('Search button clicked!');
+// });
 
-    // 計算書籍的寬度加上間距
-    const bookWidth = books[0].offsetWidth + 20; // 書籍寬度 + 間距
-    const visibleBooks = Math.floor(bookGallery.parentElement.offsetWidth / bookWidth);
-    const maxIndex = totalBooks - visibleBooks;
 
-    function scrollGallery(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex > maxIndex) currentIndex = maxIndex;
+// document.addEventListener("DOMContentLoaded", function() {
+//     let currentIndex = 0;
+//     const books = document.querySelectorAll(".book");
+//     const totalBooks = books.length;
+//     const bookGallery = document.querySelector(".book-gallery");
 
-        bookGallery.style.transform = `translateX(-${currentIndex * bookWidth}px)`;
-    }
+//     // 計算書籍的寬度加上間距
+//     const bookWidth = books[0].offsetWidth + 20; // 書籍寬度 + 間距
+//     const visibleBooks = Math.floor(bookGallery.parentElement.offsetWidth / bookWidth);
+//     const maxIndex = totalBooks - visibleBooks;
 
-    // 綁定按鈕點擊事件
-    document.querySelector(".book_carousel_prev").addEventListener("click", () => scrollGallery(-1));
-    document.querySelector(".book_carousel_next").addEventListener("click", () => scrollGallery(1));
-});
+//     function scrollGallery(direction) {
+//         currentIndex += direction;
+//         if (currentIndex < 0) currentIndex = 0;
+//         if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+//         bookGallery.style.transform = `translateX(-${currentIndex * bookWidth}px)`;
+//     }
+
+//     // 綁定按鈕點擊事件
+//     document.querySelector(".book_carousel_prev").addEventListener("click", () => scrollGallery(-1));
+//     document.querySelector(".book_carousel_next").addEventListener("click", () => scrollGallery(1));
+// });
 
 //-------------------------------------------------三個欄位---------------------------------------------------
 // document.addEventListener("DOMContentLoaded", function () {

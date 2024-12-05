@@ -52,27 +52,39 @@
                     <li><a href="#">OPAC</a></li>
             
                     <!-- 新增語言選項 -->
-                <li>
-                    <a href="#">語言</a>
-                    <ul class="language-menu">
-                        <li><a href="#">繁體中文</a></li>
-                        <li><a href="#">簡體中文</a></li>
-                        <li><a href="#">English</a></li>
-                    </ul>
-                </li>
-            </ul>
-                <form class="search-form" action="#" method="get">
+                    <li>
+                        <a href="#">語言</a>
+                        <ul class="language-menu">
+                            <li><a href="#">繁體中文</a></li>
+                            <li><a href="#">簡體中文</a></li>
+                            <li><a href="#">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="search-form" action="#" method="get">
                     <input type="text" placeholder="站內搜尋..." name="search" required>
                     <button type="submit">搜索</button>
-                </form>
+                </form> -->
 
+                <div class="header-search-container">
+                    <!-- 查詢圖標 -->
+                    <button class="header-search-icon" onclick="toggleSearchBar()">&#128269;</button>
+                    
+                    <!-- 隱藏的查詢列 -->
+                    <div class="header-search-bar">
+                        <input type="text" placeholder="輸入關鍵字...">
+                        <button type="button" onclick="performSearch()">&#128269;</button>
+                    </div>
+                </div>
+                
             </div>
         </nav>
     </header>
     
     <main>
         <section class="First_banner">
-            <button class="banner_prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="banner_prev" onclick="changeSlide(-1)">&#9664;</button>
             <div class="banner-slides">
                 <!-- 每個 .slide 區塊都是一個 Banner，可以自由編輯 -->
                 <div class="slide">
@@ -100,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <button class="banner_next" onclick="changeSlide(1)">&#10095;</button>
+            <button class="banner_next" onclick="changeSlide(1)">&#9654;</button>
         </section>
 
         <!-- 快速搜索列-->
@@ -111,7 +123,7 @@
                 <button class="quicksort-button active" onclick="switchTab('reader-info')">讀者資料查詢</button>
             </div>
     
-            <div class="search-container">
+            <div class="quicksort-search-container">
                 <div class="quicksort-content active" id="library-search">
                     <p>可查本館圖書、電子書、期刊、視聽、學位論文等</p>
                         <select class="dropdown">
@@ -186,7 +198,7 @@
 
         <section class="book-carousel">
             <h2 class="carousel-title">新到館藏</h2>
-            <button class="book_carousel_prev" onclick="scrollGallery(-1)">&#10094;</button>     
+            <button class="book_carousel_prev" onclick="scrollGallery(-1)">&#9664;</button>     
             <div class="book-gallery">
                 <div class="book">
                     <img src="images/GreenSpan.jpeg" alt="Greenspan's Basic & Clinical Endocrinology, 10e">
@@ -225,7 +237,7 @@
                     <p>Harrison's Principles of Internal Medicine, 19e</p>
                 </div>
             </div>
-            <button class="book_carousel_next" onclick="scrollGallery(1)">&#10095;</button>
+            <button class="book_carousel_next" onclick="scrollGallery(1)">&#9654;</button>
         </section>
 
          <!-----------------------------------中間分欄------------------------------------>
