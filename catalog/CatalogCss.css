@@ -1,6 +1,7 @@
 *{
     padding: 0 ;
     margin: 0 ;
+    box-sizing: border-box;
 }
 
 /* 使 body 和 html 撐滿頁面高度 */
@@ -9,95 +10,156 @@ html, body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    
+    font-family: Arial, sans-serif;
 }
 
-/*header{
-    background-color: white;
-}*/
+/* 確保導覽列始終在頁面頂部 */
+header {
+    /*position: fixed; /* 導覽列固定在頁面頂部 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 確保導覽列寬度為全頁 */
+    z-index: 1000; /* 確保導覽列在其他元素之上 */
+    background-color: white; /* 背景色，避免與內容混合 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可選：添加陰影提升視覺效果 */
+}
 
 /* 總容器樣式 */
 .header-title-menu {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row; /* 將元素水平排列 */
     align-items: flex-end; /* 將元素與下方對齊 */
     justify-content: space-between; /* 讓標題、菜單和搜索欄分佈開 */
     width: 100%;
-    padding-bottom: 10px; /* 添加與底部的距離 */
+    padding-bottom: 10px 20px; /* 添加與底部的距離 */
     position: relative; /* 確保容器位置可控制 */
 }
 
-h1{
+.section {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Portal 標題樣式 */
+.header-title-menu h1{
     font-size: 3rem;
     margin-right: 30px; /* 與選單保持適當間距 */
-    margin-left:20px;
+    margin-left:35px;
+    margin-top: 20px;
    /* white-space: nowrap;*/
 }
 
-.search-form {
+/* 整個搜索容器 */
+.header-search-container {
     display: flex;
+    position: relative;
     align-items: center; /* 垂直置中 */
-    margin-left: auto; /* 將搜索框推到右側 */
-    margin-right: 10px;
+    justify-content: flex-start; /* 將內容對齊到右側 */
+    margin-left: auto; /* 确保搜索栏在导航栏的右侧 */
+    width: auto;
+    flex-shrink: 0; /* 防止縮小 */
+    height: auto; /* 自動調整高度 */
+    gap: 5px; /* 搜索圖標和查詢列的間距 */
+    flex-direction: row-reverse; /* 改變排列方向，讓圖標在右側 */
 }
 
+/* 搜索圖標樣式 */
+.header-search-icon {
+    display: flex; /* 使用 flexbox 方便調整 */
+    align-items: center; /* 圖標垂直居中 */
+    justify-content: center; /* 圖標水平居中 */
+    width: 40px; /* 固定寬度 */
+    height: 40px; /* 固定高度 */
+    font-size: 20px; /* 設定圖標大小 */
+    background: white;
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 5px 0 0 5px; /* 左側圓角 */
+    cursor: pointer; /* 鼠標變為手形 */
+    color: black; /* 圖標顏色 */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* 動態效果 */
+    margin-right: 10px;
+   /* position: absolute;
+    right: 35%;
+    transform: translateY(-50%);
+    transform: translateX(50%);  向右微調位置 
+    cursor: pointer;
+    color: black;  圖標顏色 
+    padding: 5px 10px;  減少內邊距 
+    transition: transform 0.3s ease, color 0.3s ease; /* 添加變化效果 */
+}
+
+.header-search-icon:hover {
+    transform: scale(1.2); /* 懸停時放大效果 */
+    background-color: #f8c471; /* 懸停時變背景色 */
+}
+
+/* 查詢列樣式 */
+.header-search-bar {
+    /*position: absolute;*/
+    display: none; /* 使用 flexbox 方便排列 */
+    align-items: center; /* 垂直居中 */
+    background-color: white; /* 查詢列背景顏色 */
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 0 5px 5px 0; /* 右側圓角 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    width: 250px; /* 查詢列寬度 */
+    z-index: 10; /* 保證在其他元素之上 */
+}
+
+.header-search-bar input {
+    flex: 1; /* 讓輸入框佔據剩餘空間 */
+    padding: 10px; /* 內邊距 */
+    border: none; /* 移除邊框 */
+    font-size: 14px; /* 字體大小 */
+    outline: none; /* 移除聚焦邊框 */
+}
+
+.header-search-bar button {
+    background-color: white; /* 按鈕背景顏色 */
+    border: none; /* 無邊框 */
+    color: white; /* 按鈕文字顏色 */
+    padding: 10px 15px; /* 內邊距 */
+    font-size: 14px; /* 字體大小 */
+    border-radius: 0 5px 5px 0; /* 右側圓角 */
+    cursor: pointer; /* 鼠標變為手形 */
+    transition: background-color 0.3s ease;
+}
+
+.header-search-bar button:hover {
+    background-color: #f8c471; /* 懸停時背景色變深 */
+}
+
+
+/*.search-form {
+    display: flex;
+    align-items: center;  垂直置中 
+    margin-left: auto;  將搜索框推到右側 
+    margin-right: 20px;
+} 
+
 .search-form input[type="text"] {
-    padding: 5px 10px; /* 增加內邊距 */
-    margin-right: 10px; /* 搜索框與按鈕之間的間距 */
-    border: 1px solid #ccc; /* 邊框樣式 */
-    border-radius: 4px; /* 圓角 */
+    padding: 5px 10px;  增加內邊距 
+    margin-right: 10px;  搜索框與按鈕之間的間距 
+    border: 1px solid #ccc;  邊框樣式 
+    border-radius: 4px;  圓角 
 }
 
 .search-form button {
-    padding: 5px 10px; /* 增加內邊距 */
-    border: none; /* 移除邊框 */
-    background-color: #ef5c28; /* 按鈕背景顏色 */
-    color: white; /* 按鈕文字顏色 */
-    cursor: pointer; /* 鼠標變為手形 */
-    border-radius: 4px; /* 圓角 */
+    padding: 5px 10px;  增加內邊距 
+    border: none;  移除邊框 
+    background-color: #ef5c28;  按鈕背景顏色 
+    color: white;  按鈕文字顏色 
+    cursor: pointer;  鼠標變為手形 
+    border-radius: 4px;  圓角 
 }
 
 .search-form button:hover {
-    background-color: #d45b20; /* 鼠標懸停變色 */
-}
-
-/*ul.language-menu {
-    display: none; 隱藏語言選單
-    position: absolute; 絕對定位，避免影響其他元素
-    background-color: white; 背景顏色
-    border: 1px solid #ccc;  邊框樣式 
-    min-width: 150px; 最小寬度
-    z-index: 100; 確保在最上層
+    background-color: #d45b20; /* 鼠標懸停變色 
 }*/
-
- /*當懸停時顯示語言選單 */
-/* ul.drop-down-menu li:hover > .language-menu {
-    display: block;  
-}   */
-
-/* 子選單項目的底部邊框 */
-/* .language-menu li {
-    border-bottom: 100px dotted #ccc; 
-} */
-
-/* 最後一項不顯示底部邊框 */
-/* .language-menu li:last-child {
-    border-bottom: none;
-} */
-
-
-/*.language-menu a {
-    display: block;  使整個區塊可點擊 
-    padding: 10px;  內邊距 
-    text-decoration: none;  去除下劃線 
-    color: #333;  文字顏色 
-}*/
-
-/*.language-menu a:hover {
-    background-color: #ef5c28;  懸停變色 
-    color: white;   懸停文字顏色 
-}
-*/
 
 ul { /* 取消ul預設的內縮及樣式 */
     margin: 0;
@@ -106,10 +168,15 @@ ul { /* 取消ul預設的內縮及樣式 */
 }
 
 ul.drop-down-menu {
-        border: #ccc 1px solid;
-        display: inline-block;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 13px;
+    display: flex; /* 使用 Flexbox 使导航栏水平排列 */
+    flex-wrap: wrap; /* 小螢幕時允許選單換行 */
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-end; /* 靠右对齐 */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap :20px;
+    z-index: 1100
 }
 
 ul.drop-down-menu li {
@@ -117,6 +184,8 @@ ul.drop-down-menu li {
         white-space: nowrap;
         border-right: #ccc 1px solid;
 }
+
+
 
 ul.drop-down-menu > li:last-child {
     border-right: none;
@@ -127,6 +196,7 @@ ul.drop-down-menu > li {
 }
 
 ul.drop-down-menu a {
+    text-decoration: none;
     background-color: #fff;
     color: #333;
     display: block;
@@ -145,21 +215,43 @@ ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單時，上層按鈕仍�
     color: #fff;
 }
 
+/* 子選單樣式 */
 ul.drop-down-menu ul {
-    border: #ccc 1px solid;
+    display: none; /* 默認隱藏 */
     position: absolute;
-    z-index: 99;
-    left: -1px;
     top: 100%;
-    min-width: 180px;
+    left: 0;
+    background-color: white;
+    padding: 0; /* 移除多餘的內邊距 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加陰影 */
+    border-radius: 5px;
+    min-width: 180px; /* 保證選單寬度一致 */
 }
 
 ul.drop-down-menu ul li {
-    border-bottom: #ccc 1px solid;
+    padding: 10px 0; /* 上下內邊距，控制文字區域高度 */
+    border-bottom: 1px solid #ccc; /* 添加分隔線 */
+    text-align: center; /* 文字水平置中 */
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
 }
 
 ul.drop-down-menu ul li:last-child {
-    border-bottom: none;
+    border-bottom: none; /* 去掉最後一項的分隔線 */
+}
+
+ul.drop-down-menu ul li a {
+    text-decoration: none; /* 移除下劃線 */
+    color: #333; /* 字體顏色 */
+    font-size: 14px; /* 調整字體大小 */
+    width: 100%; /* 讓鏈接撐滿父容器 */
+    height: 100%; /* 讓鏈接撐滿父容器 */
+}
+
+ul.drop-down-menu ul li a:hover {
+    background-color: #ef5c28; /* 懸停背景顏色 */
+    color: white; /* 懸停文字顏色 */
 }
 
 ul.drop-down-menu ul ul { /*第三層以後的選單出現位置與第二層不同*/
@@ -461,15 +553,6 @@ th {
     border-radius: 5px;
 }
 
-/* 調整在小螢幕的佈局 */
-@media (max-width: 768px) {
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/*Footer*/
 .footer-container {
     background-color: #d0e4f5; /* 與 head 部分保持一致的背景顏色 */
     text-align: center; /* 文字置中 */
@@ -483,9 +566,57 @@ th {
     margin: 0; /* 移除段落的預設外邊距 */
 }
 
-/* 當 head 或 header 樣式變化時，自動適應 */
+/* 調整在小螢幕的佈局 */
 @media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .header-title-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul.drop-down-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .header-search-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .year-list li {
+        width: 100%; /* 在窄屏時，年份單列顯示 */
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr; /* 手機模式單列顯示 */
+    }
+
+/* 表格 */
+    table {
+        display: block;
+        overflow-x: auto; /* 小螢幕下允許水平滾動 */
+        white-space: nowrap;
+    }
+
+    th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    }
+
+/*Footer*/
+
+
+/* 當 head 或 header 樣式變化時，自動適應 */
+
     .footer-container {
         font-size: 12px; /* 手機或小螢幕下字體變小 */
     }
+
 }

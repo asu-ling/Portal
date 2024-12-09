@@ -1,3 +1,24 @@
+// -------------------------------------header切換查詢列顯示/隱藏*********************************************
+function toggleSearchBar() {
+    const searchBar = document.querySelector('.header-search-bar');
+    // if (searchBar.style.display === 'block') {
+    //     searchBar.style.display = 'none'; // 隱藏
+    // } else {
+    //     searchBar.style.display = 'block'; // 顯示
+    searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';    
+}
+
+// 執行查詢動作
+function performSearch() {
+    const searchInput = document.querySelector('.header-search-bar input').value;
+    if (searchInput.trim()) {
+        alert(`查詢內容: ${searchInput}`);
+        // 在這裡添加查詢邏輯，例如發送請求
+    } else {
+        alert('請輸入查詢內容！');
+    }
+}
+
 function showContent(sectionId) {
     // 隱藏所有內容區塊
     const contentSections = document.querySelectorAll('.content-section');

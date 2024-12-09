@@ -27,42 +27,56 @@
                         </ul>
                     </li>
 
-                    <li><a href="..\catalog/Catalog.html">研究資源</a>
+                    <li><a href="#">研究資源</a>
                         <ul>
-                            <li><a href="..\catalog/Catalog.html">館藏資源</a>
+                            <li><a href="../catalog/Catalog.html">館藏資源</a>
                                 <ul>
-                                    <li><a href="..\catalog/Catalog.html">館藏查詢</a></li>
+                                    <li><a href="#">館藏查詢</a></li>
                                     <li><a href="#">每月新書</a></li>
                                     <li><a href="#">預約書排行</a></li>
                                     <li><a href="#">多媒體資源</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../E-Resources\E-Resources.html">電子資源</a>
+                            <li><a href="../E-Resources/E-Resources.html">電子資源</a>
                                 <ul>
-                                    <li><a href="#">電子資源查詢</a></li>
+                                    <li><a href="../E-Resources/E-Resources.html">電子資源查詢</a></li>
                                     <li><a href="#">電子資料庫</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../E-Resources\E-Resources.html">神學相關網路資源</a></li>
-                            <li><a href="../Download/download.html">下載專區</a></li>
+                            <li><a href="https://doaj.org/">網路資源</a></li>
+                            <!-- li><a href="InternetResources/InternetResources.html">神學相關網路資源</a></li -->
+                            <li><a href="https://www.google.com">下載專區</a></li>
+                            <!--li><a href="Download/download.html">下載專區</a></li-->
                         </ul>
                     </li>
                     <li><a href="#">OPAC</a></li>
             
                     <!-- 新增語言選項 -->
-                <li>
-                    <a href="#">語言</a>
-                    <ul class="language-menu">
-                        <li><a href="#">繁體中文</a></li>
-                        <li><a href="#">簡體中文</a></li>
-                        <li><a href="#">English</a></li>
-                    </ul>
-                </li>
-            </ul>
-                <form class="search-form" action="#" method="get">
-                    <input type="text" placeholder="搜尋..." name="search" required>
+                    <li>
+                        <a href="#">語言</a>
+                        <ul class="language-menu">
+                            <li><a href="#">繁體中文</a></li>
+                            <li><a href="#">簡體中文</a></li>
+                            <li><a href="#">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="search-form" action="#" method="get">
+                    <input type="text" placeholder="站內搜尋..." name="search" required>
                     <button type="submit">搜索</button>
-                </form>
+                </form> -->
+
+                <div class="header-search-container">
+                    <!-- 查詢圖標 -->
+                    <button class="header-search-icon" onclick="toggleSearchBar()">&#128269;</button>
+                    
+                    <!-- 隱藏的查詢列 -->
+                    <div class="header-search-bar">
+                        <input type="text" placeholder="輸入關鍵字...">
+                        <button type="button" onclick="performSearch()">&#128269;</button>
+                    </div>
+                </div>
             </div>
         </nav>
 

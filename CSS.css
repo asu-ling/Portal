@@ -172,9 +172,10 @@ ul.drop-down-menu {
     align-items: center; /* 垂直居中 */
     justify-content: flex-end; /* 靠右对齐 */
     list-style: none;
-        margin: 0;
-        padding: 0;
-        gap :20px;
+    margin: 0;
+    padding: 0;
+    gap :20px;
+    z-index: 1100;
 }
 
 ul.drop-down-menu li {
@@ -515,7 +516,7 @@ header a:hover{
 }
 
 .book img {
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 5px;
 }
